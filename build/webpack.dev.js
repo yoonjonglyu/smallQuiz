@@ -5,12 +5,12 @@ const port = process.env.PORT || 38888;
 const config = {
     mode : 'development',
     entry : {
-        app : `${commonPaths.appEntry}/index.js`
+        app : `${commonPaths.appEntry}/index.tsx`
     },
     output : {
         filename : '[name].[hash].js'
     },
-    devtool : 'inline-sourse-map',
+    devtool : 'eval',
     module : {
         rules : [
             {

@@ -12,7 +12,7 @@ describe('App', () => {
                 <App />
             </Router>
         );
-        expect(screen.getByText('init')).toBeInTheDocument();
+        expect(screen.getByText('Main')).toBeInTheDocument();
     });
     test('퀴즈', () => {
         const history = createMemoryHistory();

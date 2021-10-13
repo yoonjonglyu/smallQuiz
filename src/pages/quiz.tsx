@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import Layout from '../components/layout/layout';
@@ -23,6 +23,10 @@ const Quiz: React.FC<QuizProps> = (props) => {
     const [select, setSelect] = useState<null | string>(null);
     const [isEnd, setIsEnd] = useState<boolean>(false);
     const [time, setTime] = useState<number>(Date.now());
+
+    useEffect(() => {
+        wrongHook.clearWrong();
+    }, []);
 
     const selectAnswer = (answer: string) => {
         setSelect(answer);

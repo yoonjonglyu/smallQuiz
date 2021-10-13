@@ -5,7 +5,7 @@ import StyledComponents from 'styled-components';
 interface FooterProps {
     children?: React.ReactNode
 }
-const FooterStyle = StyledComponents.footer`=
+const FooterStyle = StyledComponents.footer`
     position: absolute;
     bottom: 0;
     width: 98%;

@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { RecoilRoot } from 'recoil';
 
 import App from './app';
 
-function render(App : React.FC) {
+function render(App: React.FC) {
     ReactDOM.render(
-        <App />,
+        <RecoilRoot><App /></RecoilRoot>,
         document.getElementById("app")
     );
 }

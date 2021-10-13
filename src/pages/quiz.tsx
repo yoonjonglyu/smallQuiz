@@ -32,6 +32,7 @@ const Quiz: React.FC<QuizProps> = (props) => {
 
     useEffect(() => {
         wrongHook.clearWrong();
+        quizHook.clearTime();
     }, []);
 
     const selectAnswer = (answer: string) => {

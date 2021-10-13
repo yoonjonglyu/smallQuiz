@@ -29,7 +29,10 @@ export function quizState() {
     }
     const checkAnser = (idx: number, flag: boolean) => {
         const state = Array.from(quizList);
-        state[idx].isAns = flag;
+        state[idx] = {
+            ...state[idx],
+            isAns: flag
+        };
         setQuizList(state);
     }
 

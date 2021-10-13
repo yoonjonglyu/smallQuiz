@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import Layout from '../components/layout/layout';
+import { quizState } from '../lib/custom/quiz';
+import { wrongNote } from '../lib/custom/wrong';
 
 interface QuizProps {
     quiz: {
@@ -15,11 +18,35 @@ const Quiz: React.FC<QuizProps> = (props) => {
     const {
         quiz
     } = props;
-
+    const quizHook = quizState();
+    const wrongHook = wrongNote();
     const [select, setSelect] = useState<null | string>(null);
+    const [isEnd, setIsEnd] = useState<boolean>(false);
+    const [time, setTime] = useState<number>(Date.now());
+
+    useEffect(() => {
+        wrongHook.clearWrong();
+    }, []);
 
     const selectAnswer = (answer: string) => {
         setSelect(answer);
+        quizHook.checkAnser(quiz.idx, answer === quiz.correct_answer);
+        quizHook.updateTime(Date.now() - time);
+        if (answer !== quiz.correct_answer) {
+            wrongHook.addWrong({
+                question: quiz.question,
+                correct_answer: quiz.correct_answer
+            });
+        }
+    }
+    const handleNext = () => {
+        if (quiz.idx + 1 < quizHook.quizList.length) {
+            quizHook.selectQuiz(quiz.idx + 1);
+            setSelect(null);
+            setTime(Date.now());
+        } else {
+            setIsEnd(true);
+        }
     }
 
     return (
@@ -27,7 +54,7 @@ const Quiz: React.FC<QuizProps> = (props) => {
             <h2>{quiz.question}</h2>
             <ul>
                 {
-                    !select && quiz.answers.sort()
+                    !select && quiz.answers
                         .map((answer, idx) => <li key={idx}><button type="button" onClick={() => selectAnswer(answer)}>{answer}</button></li>)
                 }
             </ul>
@@ -39,7 +66,9 @@ const Quiz: React.FC<QuizProps> = (props) => {
                         "오답"
                 )
             }
-            {select && <button type="button">다음 문항</button>}
+            {select && <button type="button" onClick={handleNext}>다음 문항</button>}
+            {isEnd && <Redirect to="/result" />}
+            {quizHook.quizList.length === 0 && <Redirect to="/" />}
         </Layout>
     );
 }

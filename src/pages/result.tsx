@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Layout from '../components/layout/layout';
+import { quizState } from '../lib/custom/quiz';
 
 interface ResultProps {
     statis: {
@@ -13,7 +15,7 @@ const Result: React.FC<ResultProps> = (props) => {
     const {
         statis
     } = props;
-
+    const quizHook = quizState();
 
     return (
         <Layout header="풀이 결과">
@@ -23,8 +25,8 @@ const Result: React.FC<ResultProps> = (props) => {
                 <li>오답 갯수: {statis.wrong} 개</li>
             </ul>
             <ul>
-                <li><button type="button">다시 풀기</button></li>
-                <li><button type="button">오답 노트</button></li>
+                <li><Link to="/quiz" onClick={() => quizHook.selectQuiz(0)}>다시 풀기</Link></li>
+                <li><Link to="/wrong">오답 노트</Link></li>
             </ul>
         </Layout>
     );

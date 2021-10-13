@@ -16,7 +16,7 @@ export function quizState() {
                 idx: idx,
                 question: quiz.question,
                 correct_answer: quiz.correct_answer,
-                answers: quiz.incorrect_answers
+                answers: quiz.incorrect_answers.sort()
             }
         });
         setQuizList(result);

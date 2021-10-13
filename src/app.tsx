@@ -7,9 +7,11 @@ import Result from './pages/result';
 import Wrong from './pages/wrong';
 
 import { quizState } from './lib/custom/quiz';
+import { wrongNote } from './lib/custom/wrong';
 
 const App: React.FC = () => {
     const quizHook = quizState();
+    const wrongHook = wrongNote();
     return (
         <Router>
             <Switch>
@@ -27,12 +29,7 @@ const App: React.FC = () => {
                     }} />
                 </Route>
                 <Route exact path="/wrong">
-                    <Wrong wrongs={[
-                        {
-                            question: 'This Greek mythological figure is the god\/goddess of battle strategy (among other things)',
-                            correct_answer: "Athena"
-                        }
-                    ]} />
+                    <Wrong wrongs={wrongHook.wrongList} />
                 </Route>
             </Switch>
         </Router>

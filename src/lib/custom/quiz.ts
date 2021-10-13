@@ -24,6 +24,9 @@ export function quizState() {
     const updateTime = (value: number) => {
         setTime(Math.round(time + value / 1000));
     }
+    const clearTime = () => {
+        setTime(0);
+    }
     const selectQuiz = (idx: number) => {
         setCurrent(quizList[idx]);
     }
@@ -44,5 +47,6 @@ export function quizState() {
         updateTime,
         selectQuiz,
         checkAnser,
+        clearTime,
     };
 }

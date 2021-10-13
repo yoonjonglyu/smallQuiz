@@ -18,9 +18,6 @@ const CommonStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
     }
-    ul li {
-        display: inline-block;
-    }
     a {
         color: inherit;
         text-decoration: none;

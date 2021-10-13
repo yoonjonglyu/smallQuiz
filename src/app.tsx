@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Main from './pages/main';
+import Quiz from './pages/quiz';
+import Result from './pages/result';
+import Wrong from './pages/wrong';
 
 const App: React.FC = () => {
     return (
@@ -11,10 +14,27 @@ const App: React.FC = () => {
                     <Main />
                 </Route>
                 <Route exact path="/quiz">
-                    <h1>퀴즈</h1>
+                    <Quiz quiz={{
+                        idx: 0,
+                        question: 'This Greek mythological figure is the god\/goddess of battle strategy (among other things)',
+                        correct_answer: "Athena",
+                        answers: ["Ares", "Artemis", "Apollo", "Athena"]
+                    }} />
+                </Route>
+                <Route exact path="/result">
+                    <Result statis={{
+                        time: 380,
+                        answer: 8,
+                        wrong: 2,
+                    }} />
                 </Route>
                 <Route exact path="/wrong">
-                    <h1>오답노트</h1>
+                    <Wrong wrongs={[
+                        {
+                            question: 'This Greek mythological figure is the god\/goddess of battle strategy (among other things)',
+                            correct_answer: "Athena"
+                        }
+                    ]} />
                 </Route>
             </Switch>
         </Router>

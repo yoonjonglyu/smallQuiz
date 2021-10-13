@@ -34,6 +34,16 @@ describe('App', () => {
                 <App />
             </Router>
         );
-        expect(screen.getByText('오답노트')).toBeInTheDocument();
+        expect(screen.getByText('오답 노트')).toBeInTheDocument();
+    });
+    test('결과', () => {
+        const history = createBrowserHistory();
+        history.push('/result');
+        render(
+            <Router history={history}>
+                <App />
+            </Router>
+        );
+        expect(screen.getByText('풀이 결과')).toBeInTheDocument();
     });
 });

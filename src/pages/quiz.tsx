@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 import Layout from '../components/layout/layout';
 import { quizState } from '../lib/custom/quiz';
+import { wrongNote } from '../lib/custom/wrong';
 
 interface QuizProps {
     quiz: {
@@ -18,6 +19,7 @@ const Quiz: React.FC<QuizProps> = (props) => {
         quiz
     } = props;
     const quizHook = quizState();
+    const wrongHook = wrongNote();
     const [select, setSelect] = useState<null | string>(null);
     const [isEnd, setIsEnd] = useState<boolean>(false);
     const [time, setTime] = useState<number>(Date.now());
@@ -26,6 +28,12 @@ const Quiz: React.FC<QuizProps> = (props) => {
         setSelect(answer);
         quizHook.checkAnser(quiz.idx, answer === quiz.correct_answer);
         quizHook.updateTime(Date.now() - time);
+        if (answer !== quiz.correct_answer) {
+            wrongHook.addWrong({
+                question: quiz.question,
+                correct_answer: quiz.correct_answer
+            });
+        }
     }
     const handleNext = () => {
         if (quiz.idx + 1 < quizHook.quizList.length) {

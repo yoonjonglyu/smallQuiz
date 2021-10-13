@@ -28,7 +28,9 @@ export function quizState() {
         setTime(0);
     }
     const selectQuiz = (idx: number) => {
-        setCurrent(quizList[idx]);
+        if (quizList[idx]) {
+            setCurrent(quizList[idx]);
+        }
     }
     const checkAnser = (idx: number, flag: boolean) => {
         const state = Array.from(quizList);

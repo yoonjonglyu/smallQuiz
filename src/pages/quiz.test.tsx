@@ -40,7 +40,7 @@ describe('Quiz 컴포넌트', () => {
             </RecoilRoot>
         );
         fireEvent.click(screen.getByText("Athena"));
-        expect(screen.getByText("정답")).toBeInTheDocument();
+        expect(screen.getByText("맞았다!!")).toBeInTheDocument();
         expect(screen.getByRole('main')).not.toHaveTextContent('Athena');
     });
     test('오답 선택시 확인', () => {
@@ -52,7 +52,7 @@ describe('Quiz 컴포넌트', () => {
             </RecoilRoot>
         );
         fireEvent.click(screen.getByText("Ares"));
-        expect(screen.getByText("오답")).toBeInTheDocument();
+        expect(screen.getByText("틀렸다!!")).toBeInTheDocument();
         expect(screen.getByRole('main')).not.toHaveTextContent('Athena');
     });
 });

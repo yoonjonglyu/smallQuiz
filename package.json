@@ -28,7 +28,7 @@
   "bugs": {
     "url": "https://github.com/yoonjonglyu/webpack-init-template/issues"
   },
-  "homepage": "https://github.com/yoonjonglyu/webpack-init-template#readme",
+  "homepage": "https://yoonjonglyu.github.io/smallQuiz/",
   "dependencies": {
     "@babel/polyfill": "^7.11.5",
     "axios": "^0.22.0",

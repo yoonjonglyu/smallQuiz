@@ -9,14 +9,11 @@ const Main: React.FC = () => {
     useLayoutEffect(() => {
         quizHook.refreshQuizList();
     }, []);
-    useLayoutEffect(() => {
-        quizHook.selectQuiz(0);
-    },[quizHook.quizList]);
 
     return (
         <Layout header="스몰퀴즈">
             <ul>
-                <li><Link to="/quiz">퀴즈풀기</Link></li>
+                <li><Link to="/quiz" onClick={() => quizHook.selectQuiz(0)}>퀴즈풀기</Link></li>
                 <li><Link to="/wrong">오답노트</Link></li>
             </ul>
         </Layout>

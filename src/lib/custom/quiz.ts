@@ -22,7 +22,7 @@ export function quizState() {
         setQuizList(result);
     }
     const updateTime = (value: number) => {
-        setTime(time + value / 60);
+        setTime(Math.round(time + value / 1000));
     }
     const selectQuiz = (idx: number) => {
         setCurrent(quizList[idx]);

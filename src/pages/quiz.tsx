@@ -20,15 +20,18 @@ const Quiz: React.FC<QuizProps> = (props) => {
     const quizHook = quizState();
     const [select, setSelect] = useState<null | string>(null);
     const [isEnd, setIsEnd] = useState<boolean>(false);
+    const [time, setTime] = useState<number>(Date.now());
 
     const selectAnswer = (answer: string) => {
         setSelect(answer);
         quizHook.checkAnser(quiz.idx, answer === quiz.correct_answer);
+        quizHook.updateTime(Date.now() - time);
     }
     const handleNext = () => {
         if (quiz.idx + 1 < quizHook.quizList.length) {
             quizHook.selectQuiz(quiz.idx + 1);
             setSelect(null);
+            setTime(Date.now());
         } else {
             setIsEnd(true);
         }

@@ -7,7 +7,9 @@ interface MainProps {
 }
 const MainStyle = StyledComponents.main`
     min-height: 300px;
+    margin: 40px 0 30px 0;
     color: #FE8F8F;
+    font-size: 1.2rem;
     text-align: center;
 `;
 

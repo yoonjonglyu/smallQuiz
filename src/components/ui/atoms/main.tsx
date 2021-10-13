@@ -5,7 +5,7 @@ import StyledComponents from 'styled-components';
 interface MainProps {
     children: React.ReactNode
 }
-const MainStyle = StyledComponents.main`=
+const MainStyle = StyledComponents.main`
     min-height: 300px;
     color: #FE8F8F;
     text-align: center;

@@ -28,7 +28,7 @@ describe('Wrong 컴포넌트', () => {
             </Router>
         );
         expect(screen.getAllByRole('heading')[0]).toHaveTextContent('오답 노트');
-        expect(screen.getByText('틀린 문제가 없습니다.')).toBeInTheDocument();
+        expect(screen.getByText('오답 노트가 없습니다.')).toBeInTheDocument();
         expect(screen.getByRole('main')).not.toHaveTextContent('문제:');
         expect(screen.getByRole('main')).not.toHaveTextContent('정답:');
         expect(screen.getByRole('link')).toHaveTextContent('처음으로');

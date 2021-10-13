@@ -16,7 +16,7 @@ export function quizState() {
                 idx: idx,
                 question: quiz.question,
                 correct_answer: quiz.correct_answer,
-                answers: quiz.incorrect_answers
+                answers: quiz.incorrect_answers.sort()
             }
         });
         setQuizList(result);
@@ -24,8 +24,13 @@ export function quizState() {
     const updateTime = (value: number) => {
         setTime(Math.round(time + value / 1000));
     }
+    const clearTime = () => {
+        setTime(0);
+    }
     const selectQuiz = (idx: number) => {
-        setCurrent(quizList[idx]);
+        if (quizList[idx]) {
+            setCurrent(quizList[idx]);
+        }
     }
     const checkAnser = (idx: number, flag: boolean) => {
         const state = Array.from(quizList);
@@ -44,5 +49,6 @@ export function quizState() {
         updateTime,
         selectQuiz,
         checkAnser,
+        clearTime,
     };
 }

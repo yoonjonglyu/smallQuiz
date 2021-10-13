@@ -2,6 +2,8 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import App from './app';
+import Quiz from './pages/quiz';
+
 import { createBrowserHistory } from 'history';
 import { render, screen } from '@testing-library/react';
 
@@ -25,7 +27,12 @@ describe('App', () => {
         render(
             <RecoilRoot>
                 <Router history={history}>
-                    <App />
+                    <Quiz quiz={{
+                        idx: 0,
+                        question: '',
+                        answers: [],
+                        correct_answer: ''
+                    }}/>
                 </Router>
             </RecoilRoot>
         );

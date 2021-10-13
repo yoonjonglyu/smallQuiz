@@ -13,7 +13,7 @@ export const QuizList = atom<Array<{
 }>>({
     key: 'quizList',
     default: [
-
+        
     ]
 });
 export const CurrentQuiz = atom<{
@@ -21,7 +21,12 @@ export const CurrentQuiz = atom<{
     question: string
     correct_answer: string
     answers: Array<string>
-} | undefined>({
+}>({
     key: 'quiz',
-    default: undefined
+    default: {
+        idx: 0,
+        question: '',
+        correct_answer: '',
+        answers: []
+    }
 });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Layout from '../components/layout/layout';
 
@@ -15,15 +15,31 @@ const Quiz: React.FC<QuizProps> = (props) => {
     const {
         quiz
     } = props;
+
+    const [select, setSelect] = useState<null | string>(null);
+
+    const selectAnswer = (answer: string) => {
+        setSelect(answer);
+    }
+
     return (
         <Layout header={"퀴즈"}>
             <h2>{quiz.question}</h2>
             <ul>
                 {
-                    quiz.answers.sort()
-                        .map((answer, idx) => <li key={idx}><button type="button">{answer}</button></li>)
+                    !select && quiz.answers.sort()
+                        .map((answer, idx) => <li key={idx}><button type="button" onClick={() => selectAnswer(answer)}>{answer}</button></li>)
                 }
             </ul>
+            {
+                select &&
+                (
+                    select === quiz.correct_answer ?
+                        "정답" :
+                        "오답"
+                )
+            }
+            {select && <button type="button">다음 문항</button>}
         </Layout>
     );
 }

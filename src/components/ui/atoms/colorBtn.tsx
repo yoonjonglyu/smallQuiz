@@ -8,6 +8,8 @@ interface ColorBtnProps {
     onClick?: () => void
 }
 const ColorBtnStyle = StyledComponents.button`
+    width: 50%;
+    height: 2rem;
     padding: 4px 3px;
     background-color: ${props => props.color || "#FE8F8F"};
     border-color: #FCD2D1;

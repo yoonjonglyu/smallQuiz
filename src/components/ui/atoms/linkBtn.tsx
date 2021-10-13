@@ -25,11 +25,12 @@ const LinkBtn: React.FC<LinkBtnProps> = (props) => {
     const {
         children,
         to,
-        color
+        color,
+        onClick
     } = props;
 
     return (
-        <LinkBtnStyle to={to} color={color}>
+        <LinkBtnStyle to={to} color={color} onClick={onClick}>
             {children}
         </LinkBtnStyle>
     )

@@ -56,6 +56,7 @@ const Quiz: React.FC<QuizProps> = (props) => {
             }
             {select && <button type="button" onClick={handleNext}>다음 문항</button>}
             {isEnd && <Redirect to="/result" />}
+            {quizHook.quizList.length === 0 && <Redirect to="/" />}
         </Layout>
     );
 }

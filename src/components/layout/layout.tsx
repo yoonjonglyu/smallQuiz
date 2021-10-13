@@ -1,9 +1,31 @@
 import React from 'react';
+import StyledComponents, { createGlobalStyle } from 'styled-components';
+
+import Header from '../ui/atoms/header';
+import Main from '../ui/atoms/main';
+import Footer from '../ui/atoms/footer';
 
 interface LayoutProps {
     header?: React.ReactNode
     children?: React.ReactNode
 }
+const CommonStyle = createGlobalStyle`
+    body {
+        background-color: #FFEDD3;
+    }
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    ul li {
+        display: inline-block;
+    }
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+`;
 
 const Layout: React.FC<LayoutProps> = (props) => {
     const {
@@ -13,15 +35,14 @@ const Layout: React.FC<LayoutProps> = (props) => {
 
     return (
         <>
-            <header>
+            <CommonStyle />
+            <Header>
                 <h1 role="heading">{header}</h1>
-            </header>
-            <main role="main">
+            </Header>
+            <Main>
                 {children}
-            </main>
-            <footer>
-                <small>Copyright 2021. 류윤종 All Right Reserve.</small>
-            </footer>
+            </Main>
+            <Footer />
         </>
     )
 };

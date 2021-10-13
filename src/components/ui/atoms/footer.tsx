@@ -6,7 +6,7 @@ interface FooterProps {
     children?: React.ReactNode
 }
 const FooterStyle = StyledComponents.footer`
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 98%;
     margin: 0;
